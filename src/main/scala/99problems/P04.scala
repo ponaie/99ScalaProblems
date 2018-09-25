@@ -8,22 +8,20 @@ object P04 {
   def lengthBuiltin[A](list: List[A]): Int = list.length
 
   // Recursive
-  def lengthRecursive[A](list: List[A]): Int = {
-    ls match {
-      case Nil => 0
-      case _ :: tail => 1 + lengthRecursive(tail)
-    }
+  def lengthRecursive[A](list: List[A]): Int = ls match {
+    case Nil => 0
+    case _ :: tail => 1 + lengthRecursive(tail)
   }
 
+  // Tail recursive
   def lengthTailRecursive[A](list: List[A]): Int = {
-    def lengthR[A](cnt: Int, list: List[A]): Int = {
-      ls match {
-        case Nil => cnt
-        case _ :: tail => lengthR(cnt + 1, tail)
-      }
+    def lengthR[A](cnt: Int, list: List[A]): Int = ls match {
+      case Nil => cnt
+      case _ :: tail => lengthR(cnt + 1, tail)
     }
     lengthR(0, list)
   }
 
+  // Pure functional
   def lengthFunctional[A](list: List[A]): Int = list.foldLeft(0) { (c, _) => c + 1 }
 }
