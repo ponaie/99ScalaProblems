@@ -20,7 +20,7 @@ object P20 {
       case (_, Nil) => throw new NoSuchElementException
       case (0, h :: tail) => (tail, h)
       case (_, h :: tail) => {
-        val (s, t) = removeAt(n - 1, ls.tail)
+        val (s, t) = removeAtRecursive(n - 1, ls.tail)
         (ls.head :: s, t)
       }
     }
